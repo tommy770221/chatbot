@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/chatfuel")
 @Controller
 public class ChatFuelController {
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "block",method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String blockTemplate(@RequestParam(value = "test") String test, HttpServletRequest httpServletRequest) {
         return "{\n" +
