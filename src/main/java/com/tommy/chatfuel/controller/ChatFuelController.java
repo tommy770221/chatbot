@@ -57,7 +57,7 @@ public class ChatFuelController {
                 "          \"elements\":[\n" +
                 "            {\n" +
                 "              \"title\":\"Classic White T-Shirt\",\n" +
-                "              \"image_url\":\"https://pixabay.com/zh/%E5%AE%B6%E8%9D%87-%E9%A3%9E-%E5%8A%A8%E7%89%A9-%E7%BB%BF%E8%89%B2-%E7%89%B9%E5%86%99-%E6%98%86%E8%99%AB-2221549/\",\n" +
+                "              \"image_url\":\"https://cdn.pixabay.com/photo/2017/04/11/21/34/giraffe-2222908_960_720.jpg\",\n" +
                 "              \"subtitle\":\"Soft white cotton t-shirt is back in style\",\n" +
                 "              \"buttons\":[\n" +
                 "                {\n" +
@@ -74,7 +74,7 @@ public class ChatFuelController {
                 "            },\n" +
                 "            {\n" +
                 "              \"title\":\"Classic Grey T-Shirt\",\n" +
-                "              \"image_url\":\"https://pixabay.com/zh/%E5%AE%B6%E8%9D%87-%E9%A3%9E-%E5%8A%A8%E7%89%A9-%E7%94%9F%E6%B4%BB-%E6%98%86%E8%99%AB-%E7%89%B9%E5%86%99-2222158/\",\n" +
+                "              \"image_url\":\"https://cdn.pixabay.com/photo/2017/04/11/21/34/giraffe-2222908_960_720.jpg\",\n" +
                 "              \"subtitle\":\"Soft gray cotton t-shirt is back in style\",\n" +
                 "              \"buttons\":[\n" +
                 "                {\n" +
