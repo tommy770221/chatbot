@@ -36,10 +36,10 @@ public class LineBotController {
     @RequestMapping(value = "block",method ={RequestMethod.GET,RequestMethod.POST}, produces = "application/json")
     @ResponseBody
     public String blockTemplate(HttpServletRequest httpServletRequest) throws IOException {
-        StringWriter writer = new StringWriter();
-        IOUtils.copy(httpServletRequest.getInputStream(), writer, "utf-8");
-        String theString = writer.toString();
-        System.out.println(theString);
+       // StringWriter writer = new StringWriter();
+       // IOUtils.copy(httpServletRequest.getInputStream(), writer, "utf-8");
+       String theString ="";
+       // System.out.println(theString);
         try {
             CallbackRequest callbackRequest = lineBotCallbackRequestParser.handle(httpServletRequest);
             List<Event> events= callbackRequest.getEvents();
