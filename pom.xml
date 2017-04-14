@@ -64,11 +64,6 @@
 		</dependency>
         <dependency>
             <groupId>com.linecorp.bot</groupId>
-            <artifactId>line-bot-spring-boot</artifactId>
-            <version>1.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.linecorp.bot</groupId>
             <artifactId>line-bot-api-client</artifactId>
             <version>1.6.0</version>
         </dependency>
