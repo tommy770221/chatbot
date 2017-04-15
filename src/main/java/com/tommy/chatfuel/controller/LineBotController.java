@@ -1,6 +1,7 @@
 package com.tommy.chatfuel.controller;
 
 import com.linecorp.bot.client.LineMessagingServiceBuilder;
+import com.linecorp.bot.client.LineSignatureValidator;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.CallbackRequest;
 import com.linecorp.bot.model.event.Event;
@@ -29,8 +30,8 @@ import java.util.List;
 @RequestMapping("/line")
 @Controller
 public class LineBotController {
-    @Autowired
-    private LineBotCallbackRequestParser lineBotCallbackRequestParser;
+
+    private LineBotCallbackRequestParser lineBotCallbackRequestParser=new LineBotCallbackRequestParser(new LineSignatureValidator("hhNohi5sJV4/yj1tvTCvBPrxSop6WKo+GsxOCbE7dI8tYc1+8xbUIFm7raVZ7CrBpkt2N29F3QngT7HyEC/OOi1Tw+n281xb7YOwXku1c1SnK4FAbkpa0J+Vzy5Xz3/6+uCw9JMjibkIjY3nilOg6wdB04t89/1O/w1cDnyilFU=".getBytes()));
 
 
     @RequestMapping(value = "block",method ={RequestMethod.GET,RequestMethod.POST}, produces = "application/json")
