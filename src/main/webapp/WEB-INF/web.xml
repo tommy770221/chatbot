@@ -8,8 +8,19 @@
     <display-name>Spring MVC Hello World</display-name>
     <description>Spring MVC web application</description>
 
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-core-config.xml</param-value>
+    </context-param>
+
     <servlet>
-        <servlet-name>hello-dispatcher</servlet-name>
+        <servlet-name>chatbot</servlet-name>
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
@@ -21,21 +32,12 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>hello-dispatcher</servlet-name>
+        <servlet-name>chatbot</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- For root context -->
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-core-config.xml</param-value>
-    </context-param>
 
 
 </web-app>
