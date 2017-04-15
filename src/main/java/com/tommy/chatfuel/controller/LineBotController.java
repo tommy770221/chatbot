@@ -37,8 +37,8 @@ public class LineBotController {
     @RequestMapping(value = "block",method ={RequestMethod.GET,RequestMethod.POST}, produces = "application/json")
     @ResponseBody
     public String blockTemplate(HttpServletRequest httpServletRequest) throws IOException {
-
-       LineBotCallbackRequestParser lineBotCallbackRequestParser=new LineBotCallbackRequestParser(new LineSignatureValidator("hhNohi5sJV4/yj1tvTCvBPrxSop6WKo+GsxOCbE7dI8tYc1+8xbUIFm7raVZ7CrBpkt2N29F3QngT7HyEC/OOi1Tw+n281xb7YOwXku1c1SnK4FAbkpa0J+Vzy5Xz3/6+uCw9JMjibkIjY3nilOg6wdB04t89/1O/w1cDnyilFU=".getBytes()));// StringWriter writer = new StringWriter();
+        String channelToken="hhNohi5sJV4/yj1tvTCvBPrxSop6WKo+GsxOCbE7dI8tYc1+8xbUIFm7raVZ7CrBpkt2N29F3QngT7HyEC/OOi1Tw+n281xb7YOwXku1c1SnK4FAbkpa0J+Vzy5Xz3/6+uCw9JMjibkIjY3nilOg6wdB04t89/1O/w1cDnyilFU=";
+       LineBotCallbackRequestParser lineBotCallbackRequestParser=new LineBotCallbackRequestParser(new LineSignatureValidator(channelToken.getBytes()));// StringWriter writer = new StringWriter();
        // IOUtils.copy(httpServletRequest.getInputStream(), writer, "utf-8");
        String theString ="";
        // System.out.println(theString);
@@ -54,7 +54,7 @@ public class LineBotController {
                 );
                 Response<BotApiResponse> response =
                         LineMessagingServiceBuilder
-                                .create("hhNohi5sJV4/yj1tvTCvBPrxSop6WKo+GsxOCbE7dI8tYc1+8xbUIFm7raVZ7CrBpkt2N29F3QngT7HyEC/OOi1Tw+n281xb7YOwXku1c1SnK4FAbkpa0J+Vzy5Xz3/6+uCw9JMjibkIjY3nilOg6wdB04t89/1O/w1cDnyilFU=")
+                                .create(channelToken)
                                 .build()
                                 .replyMessage(replyMessage)
                                 .execute();
