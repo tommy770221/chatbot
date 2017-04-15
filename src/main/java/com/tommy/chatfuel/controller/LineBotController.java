@@ -58,7 +58,7 @@ public class LineBotController {
                                 .execute();
                 System.out.println(response.code() + " " + response.message());
             }
-        } catch (LineBotCallbackException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
