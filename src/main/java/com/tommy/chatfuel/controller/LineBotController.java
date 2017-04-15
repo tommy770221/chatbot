@@ -1,5 +1,9 @@
 package com.tommy.chatfuel.controller;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.common.io.ByteStreams;
 import com.linecorp.bot.client.LineMessagingServiceBuilder;
 import com.linecorp.bot.client.LineSignatureValidator;
 import com.linecorp.bot.model.ReplyMessage;
@@ -32,18 +36,20 @@ import java.util.List;
 public class LineBotController {
 
 
-
+    private final ObjectMapper objectMapper=buildObjectMapper();
 
     @RequestMapping(value = "block",method ={RequestMethod.GET,RequestMethod.POST}, produces = "application/json")
     @ResponseBody
     public String blockTemplate(HttpServletRequest httpServletRequest) throws IOException {
         String channelToken="hhNohi5sJV4/yj1tvTCvBPrxSop6WKo+GsxOCbE7dI8tYc1+8xbUIFm7raVZ7CrBpkt2N29F3QngT7HyEC/OOi1Tw+n281xb7YOwXku1c1SnK4FAbkpa0J+Vzy5Xz3/6+uCw9JMjibkIjY3nilOg6wdB04t89/1O/w1cDnyilFU=";
-       LineBotCallbackRequestParser lineBotCallbackRequestParser=new LineBotCallbackRequestParser(new LineSignatureValidator(channelToken.getBytes()));// StringWriter writer = new StringWriter();
+       //LineBotCallbackRequestParser lineBotCallbackRequestParser=new LineBotCallbackRequestParser(new LineSignatureValidator(channelToken.getBytes()));// StringWriter writer = new StringWriter();
        // IOUtils.copy(httpServletRequest.getInputStream(), writer, "utf-8");
        String theString ="";
        // System.out.println(theString);
         try {
-            CallbackRequest callbackRequest = lineBotCallbackRequestParser.handle(httpServletRequest);
+           // CallbackRequest callbackRequest = lineBotCallbackRequestParser.handle(httpServletRequest);
+            byte[] json = ByteStreams.toByteArray(httpServletRequest.getInputStream());
+            CallbackRequest callbackRequest = (CallbackRequest) objectMapper.readValue(json, CallbackRequest.class);
             List<Event> events= callbackRequest.getEvents();
             for(Event event:events){
                 MessageEvent env=(MessageEvent) event;
@@ -65,5 +71,12 @@ public class LineBotController {
         }
 
         return "{\"test\":\""+theString+"\"}";
+    }
+
+    private static ObjectMapper buildObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.registerModule(new JavaTimeModule()).configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
+        return objectMapper;
     }
 }
